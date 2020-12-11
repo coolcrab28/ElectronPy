@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <script>window.jQuery = window.$ = require('jquery');</script>
+  <meta charset="UTF-8">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <link rel="stylesheet" href="index.css">
+  
+</head>
+  <body>
+    <div id="top">
+      <header>
+        <button class='op' id='close' onclick="clWin()">×</button>
+        <button class="op" id="max" onclick="cWin()">□</button>
+        <button class='op' id="min" onclick="minWin()">−</button>
+        <p class='top_t' id='pp'></p>
+      </header>
+    </div>
+    <div class="container text-center">
+      <div class="text-center">
+        <h1>PyTron</h1>
+      </div>
+      <br>
+      <br>
+      <button type="button" class="btn btn-primary" style="outline: none;">Get Data</button>
+      <button type="button" class="btn btn-primary" onclick="getData()" style="outline: none;">Enter Data</button>
+    </div>
+    <script defer src="render.js"></script>
+  </body>
+</html>
