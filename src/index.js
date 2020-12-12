@@ -1,5 +1,4 @@
 const path = require('path')
-const glob = require('glob')
 const {app, BrowserWindow, webviewTag} = require('electron')
 
 const debug = /--debug/.test(process.argv[2])

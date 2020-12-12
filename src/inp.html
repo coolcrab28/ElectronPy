@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script>
+        const {remote,BrowserWindow} = require('electron')
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>window.jQuery = window.$ = require('jquery');</script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="st.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Enter Data</h1>
+        <form onsubmit="submitForm()">
+            <label for="usr">Name:</label>
+            <input type="text" class="form-control" id="usr" required
+            oninvalid="this.setCustomValidity(' '); document.getElementById('usr').style.border = '1px solid red'"
+            oninput="setCustomValidity(''); document.getElementById('usr').style.border = '1px solid #ccc' "
+            >
+            <label for="ag">Age:</label>
+            <input type="number" class="form-control" id="ag" required
+            oninvalid="this.setCustomValidity(' '); document.getElementById('ag').style.border = '1px solid red'"
+            oninput="setCustomValidity(''); document.getElementById('ag').style.border = '1px solid #ccc' "
+            >
+            <label for="em">Email ID:</label>
+            <input type="email" class="form-control" id="em" required
+            oninvalid="this.setCustomValidity(' '); document.getElementById('em').style.border = '1px solid red'"
+            oninput="setCustomValidity(''); document.getElementById('em').style.border = '1px solid #ccc' "
+            >
+            <br>
+            <button type="submit" class='btn btn-primary'>Submit</button>
+    </form>
+    </div>   
+    
+    <script>
+        
+        // alert('ok 1')
+        const {PythonShell} =  require("python-shell");
+        const {path} = require("path");
+        // alert('ok 2')
+
+
+        function runPy(){
+        var name = document.getElementById('usr').value;
+        var age = document.getElementById('ag').value;
+        var email = document.getElementById('em').value;
+        var options = {
+            args:[name,age,email]
+        }
+
+        var msg = new PythonShell('id.py', options)
+        document.getElementById('usr').value = '';
+        document.getElementById('ag').value = '' ;
+        document.getElementById('em').value = '';
+    }
+
+    // alert('ok 3')
+        function submitForm(){
+        
+            // alert(age,'hi23')
+            var r = confirm("Input to database?");
+            if (r == true) {
+                alert('Ok')
+                runPy();
+            } 
+            else {
+                alert('No changes were made!')
+            }
+        }
+        
+    </script>
+</body>
+</html>
