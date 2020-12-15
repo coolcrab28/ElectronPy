@@ -40,7 +40,6 @@
         
         // alert('ok 1')
         const {PythonShell} =  require("python-shell");
-        const {path} = require("path");
         // alert('ok 2')
 
 
@@ -48,12 +47,15 @@
         var name = document.getElementById('usr').value;
         var age = document.getElementById('ag').value;
         var email = document.getElementById('em').value;
+        const path = require("path");
+        var p  = path.join(__dirname,'/../py')
         var options = {
-            args:[name,age,email]
+            scriptPath: p,
+            args:[name,age,email,p]
         }
 
         var msg = new PythonShell('id.py', options)
-        document.getElementById('usr').value = '';
+        document.getElementById('usr').value = 'done';
         document.getElementById('ag').value = '' ;
         document.getElementById('em').value = '';
     }
@@ -62,14 +64,7 @@
         function submitForm(){
         
             // alert(age,'hi23')
-            var r = confirm("Input to database?");
-            if (r == true) {
-                alert('Ok')
-                runPy();
-            } 
-            else {
-                alert('No changes were made!')
-            }
+            runPy()
         }
         
     </script>
